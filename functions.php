@@ -25,39 +25,39 @@ if (!isset($content_width))
 if (function_exists('add_theme_support'))
 {
     // Add Menu Support
-    add_theme_support('menus');
+  add_theme_support('menus');
 
-    // Add Thumbnail Theme Support
-    add_theme_support('post-thumbnails');
-    add_image_size('large', 700, '', true); // Large Thumbnail
-    add_image_size('medium', 250, '', true); // Medium Thumbnail
-    add_image_size('small', 120, '', true); // Small Thumbnail
-    add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
+  // Add Thumbnail Theme Support
+  add_theme_support('post-thumbnails');
+  add_image_size('large', 700, '', true); // Large Thumbnail
+  add_image_size('medium', 250, '', true); // Medium Thumbnail
+  add_image_size('small', 120, '', true); // Small Thumbnail
+  add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
 
-    // Add Support for Custom Backgrounds - Uncomment below if you're going to use
-    /*add_theme_support('custom-background', array(
-	'default-color' => 'FFF',
-	'default-image' => get_template_directory_uri() . '/img/bg.jpg'
-    ));*/
+  // Add Support for Custom Backgrounds - Uncomment below if you're going to use
+  /*add_theme_support('custom-background', array(
+  'default-color' => 'FFF',
+  'default-image' => get_template_directory_uri() . '/img/bg.jpg'
+  ));*/
 
-    // Add Support for Custom Header - Uncomment below if you're going to use
-    add_theme_support('custom-header', array(
-	'default-image'			=> get_template_directory_uri() . '/img/headers/default.jpg',
-	'header-text'			=> false,
-	'default-text-color'		=> '000',
-	'width'				=> 1000,
-	'height'			=> 198,
-	'random-default'		=> false,
-	'wp-head-callback'		=> $wphead_cb,
-	'admin-head-callback'		=> $adminhead_cb,
-	'admin-preview-callback'	=> $adminpreview_cb
-    ));
+  // Add Support for Custom Header - Uncomment below if you're going to use
+  add_theme_support('custom-header', array(
+    'default-image'			=> get_template_directory_uri() . '/img/headers/default.jpg',
+    'header-text'			=> false,
+    'default-text-color'		=> '000',
+    'width'				=> 1000,
+    'height'			=> 198,
+    'random-default'		=> false,
+    'wp-head-callback'		=> $wphead_cb,
+    'admin-head-callback'		=> $adminhead_cb,
+    'admin-preview-callback'	=> $adminpreview_cb
+  ));
 
-    // Enables post and comment RSS feed links to head
-    add_theme_support('automatic-feed-links');
+  // Enables post and comment RSS feed links to head
+  add_theme_support('automatic-feed-links');
 
-    // Localisation Support
-    load_theme_textdomain('html5blank', get_template_directory() . '/languages');
+  // Localisation Support
+  load_theme_textdomain('html5blank', get_template_directory() . '/languages');
 }
 
 /*------------------------------------*\
@@ -92,54 +92,57 @@ function html5blank_nav()
 // Load HTML5 Blank scripts (header.php)
 function html5blank_header_scripts()
 {
-    if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-        
-        wp_enqueue_script('jquery');
+  if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
+      
+    wp_enqueue_script('jquery');
 
-    	wp_register_script('bootstrap', get_template_directory_uri() . '/js/lib/bootstrap.min.js', array(), '3.7.0'); // Bootstrap
-        wp_enqueue_script('bootstrap'); // Enqueue it!
-        
-        wp_register_script('conditionizr', get_template_directory_uri() . '/js/lib/conditionizr-4.3.0.min.js', array(), '4.3.0'); // Conditionizr
-        wp_enqueue_script('conditionizr'); // Enqueue it!
+    wp_register_script('bootstrap', get_template_directory_uri() . '/js/lib/bootstrap.min.js', array(), '3.7.0'); // Bootstrap
+    wp_enqueue_script('bootstrap'); // Enqueue it!
+    
+    wp_register_script('conditionizr', get_template_directory_uri() . '/js/lib/conditionizr-4.3.0.min.js', array(), '4.3.0'); // Conditionizr
+    wp_enqueue_script('conditionizr'); // Enqueue it!
 
-        wp_register_script('modernizr', get_template_directory_uri() . '/js/lib/modernizr-2.7.1.min.js', array(), '2.7.1'); // Modernizr
-        wp_enqueue_script('modernizr'); // Enqueue it!
-        
+    wp_register_script('modernizr', get_template_directory_uri() . '/js/lib/modernizr-2.7.1.min.js', array(), '2.7.1'); // Modernizr
+    wp_enqueue_script('modernizr'); // Enqueue it!
+    
 
-        wp_register_script('html5blankscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
-        wp_enqueue_script('html5blankscripts'); // Enqueue it!
-    }
+    wp_register_script('html5blankscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
+    wp_enqueue_script('html5blankscripts'); // Enqueue it!
+  }
 }
 
 // Load HTML5 Blank conditional scripts
 function html5blank_conditional_scripts()
 {   
-    if ( is_front_page()) {
-        wp_register_style('starbucks', get_template_directory_uri() . '/themecss/starbucks.css', array(), '1.0', 'all');
-        wp_enqueue_style('starbucks'); // Enqueue it!
-    }
+  if ( is_page('starbucks')) {
+    wp_register_style('starbucks', get_template_directory_uri() . '/themelib/starbucks.css', array(), '1.0', 'all');
+    wp_enqueue_style('starbucks'); // Enqueue it!
+  }
 }
 
 // Load HTML5 Blank styles
 function html5blank_styles()
 {
     
-    wp_register_style('normalize', get_template_directory_uri() . '/css/normalize.min.css', array(), '1.0', 'all');
-    wp_enqueue_style('normalize'); // Enqueue it!
+  wp_register_style('normalize', get_template_directory_uri() . '/css/normalize.min.css', array(), '1.0', 'all');
+  wp_enqueue_style('normalize'); // Enqueue it!
 
-    wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.7.0', 'all');
-    wp_enqueue_style('bootstrap'); // Enqueue it!
+  wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.7.0', 'all');
+  wp_enqueue_style('bootstrap'); // Enqueue it!
 
-    wp_register_style('fontawesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all');
-    wp_enqueue_style('fontawesome'); // Enqueue it!
+  wp_register_style('fontawesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all');
+  wp_enqueue_style('fontawesome'); // Enqueue it!
 
-    if ( is_front_page()) {
-        wp_register_style('starbucks', get_template_directory_uri() . '/themecss/starbucks.css', array(), '1.0', 'all');
-        wp_enqueue_style('starbucks'); // Enqueue it!
-    }
+  /*------------------------------------*\
+    Estilos propios de temas
+  \*------------------------------------*/
+  if (is_page('starbucks')) {
+    wp_register_style('starbucks', get_template_directory_uri() . '/themelib/starbucks.css', array(), '1.0', 'all');
+    wp_enqueue_style('starbucks'); // Enqueue it!
+  }
     
-    wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
-    wp_enqueue_style('html5blank'); // Enqueue it!
+  wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
+  wp_enqueue_style('html5blank'); // Enqueue it!
     
 }
 
@@ -362,7 +365,7 @@ function html5blankcomments($comment, $args, $depth)
 
 // Add Actions
 add_action('init', 'html5blank_header_scripts'); // Add Custom Scripts to wp_head
-add_action('wp_print_scripts', 'html5blank_conditional_scripts'); // Add Conditional Page Scripts
+//add_action('wp_print_scripts', 'html5blank_conditional_scripts'); // Add Conditional Page Scripts
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
 add_action('wp_enqueue_scripts', 'html5blank_styles'); // Add Theme Stylesheet
 add_action( 'init', 'register_html5_menu' );
@@ -427,4 +430,41 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
     return '<h2>' . $content . '</h2>';
 }
 
+
+
+/*------------------------------------*\
+	Personalizando el LOGIN
+\*------------------------------------*/
+
+function admin_styles() {
+  wp_enqueue_style( 'vegasCSS', get_template_directory_uri() . '/login/css/vegas.min.css', false );
+  wp_enqueue_style( 'loginCSS', get_template_directory_uri() . '/login/css/loginStyles.css', false );
+
+  wp_enqueue_script( 'jquery' );
+  wp_enqueue_script( 'vegasJS', get_template_directory_uri() . '/login/js/vegas.min.js', array('jquery'), '1.0.0', true);
+  wp_enqueue_script( 'loginjs', get_template_directory_uri() . '/login/js/login.js', array('jquery'), '1.0.0', true);
+
+
+  wp_localize_script(
+    'loginjs',
+    'login_imagenes',
+    array(
+      "ruta_plantilla" => get_template_directory_uri()
+    )
+  );
+}
+
+add_action('login_enqueue_scripts', 'admin_styles', 10 );
+  
+
+
+/*------------------------------------*\
+	Archivos HTTP
+\*------------------------------------*/
+function change_graphic_lib($array) {
+  return array( 'WP_Image_Editor_GD', 'WP_Image_Editor_Imagick' );
+}
+    
+add_filter( 'wp_image_editors', 'change_graphic_lib' );
+    
 ?>
