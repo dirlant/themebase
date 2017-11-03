@@ -25,26 +25,32 @@
 	</head>
 	<body <?php body_class(); ?>>
 
-		<!-- wrapper -->
-		<div class="wrapper">
+				<nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bootstrap-nav-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">
+                <img alt="Brand" src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" height="25px">
+              </a>        
+            </div><!-- /. navbar-header -->
+            <!-- Collect the nav links from WordPress -->
+            <div class="collapse navbar-collapse" id="bootstrap-nav-collapse">         
+            <?php 
+              $args = array(
+                'theme_location' => 'header-menu',
+                'depth' => 0,
+                'container' => '',
+                'menu_class'  => 'nav navbar-nav',
+                'walker'  => new BootstrapNavMenuWalker()
+              );
+              wp_nav_menu($args);
+            ?>
+          </div><!-- ./collapse -->
+        </div><!-- /.container -->
+      </nav>
 
-			<!-- header -->
-			<header class="header clear" role="banner">
-
-					<!-- logo -->
-					<div class="logo">
-						<a href="<?php echo home_url(); ?>">
-							<!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
-							<img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo" class="logo-img">
-						</a>
-					</div>
-					<!-- /logo -->
-
-					<!-- nav -->
-					<nav class="nav" role="navigation">
-						<?php html5blank_nav(); ?>
-					</nav>
-					<!-- /nav -->
-
-			</header>
-			<!-- /header -->
